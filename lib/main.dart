@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:spacex_flutter/utils/hive_init.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initHive();
   runApp(const MyApp());
 }
 

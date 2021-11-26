@@ -1,17 +1,31 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
 
+part 'roadster.g.dart';
+
+@HiveType(typeId: 0)
 class Roadster extends Equatable {
+  @HiveField(1)
   final String name;
+  @HiveField(2)
   final int launchDateUnix;
+  @HiveField(3)
   final int launchMassKg;
+  @HiveField(4)
   final String orbitType;
+  @HiveField(5)
   final double periodDays;
+  @HiveField(6)
   final double speedKph;
+  @HiveField(7)
   final double earthDistanceKm;
+  @HiveField(8)
   final double marsDistanceKm;
+  @HiveField(9)
   final String wikipedia;
+  @HiveField(10)
   final String details;
 
   const Roadster(
