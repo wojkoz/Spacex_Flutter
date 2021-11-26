@@ -1,7 +1,7 @@
 import 'package:spacex_flutter/data/data_providers/i_spacex_data_provider.dart';
-import 'package:spacex_flutter/data/models/roadster.dart';
-import 'package:spacex_flutter/data/models/mission.dart';
-import 'package:spacex_flutter/data/models/launch.dart';
+import 'package:spacex_flutter/data/models/roadster/roadster.dart';
+import 'package:spacex_flutter/data/models/mission/mission.dart';
+import 'package:spacex_flutter/data/models/launch/launch.dart';
 
 class SpaceXNetworkDataProvider implements ISpaceXDataProvider {
   @override
