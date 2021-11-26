@@ -1,5 +1,6 @@
 import 'package:spacex_flutter/data/data_providers/i_spacex_cache.dart';
 import 'package:spacex_flutter/data/data_providers/i_spacex_data_provider.dart';
+import 'package:spacex_flutter/data/models/response/basic_response.dart';
 import 'package:spacex_flutter/data/models/roadster/roadster.dart';
 import 'package:spacex_flutter/data/models/mission/mission.dart';
 import 'package:spacex_flutter/data/models/launch/launch.dart';
@@ -13,26 +14,26 @@ class SpaceXRepository implements ISpaceXRepository {
       {required this.networkDataProvider, required this.cacheDataProvider});
 
   @override
-  Future<List<Launch>> getLaunches() {
+  Future<void> updateSpaceXCache() {
+    // TODO: implement updateSpaceXCache
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<BaseResponse<List<Launch>>> getLaunches() {
     // TODO: implement getLaunches
     throw UnimplementedError();
   }
 
   @override
-  Future<List<Mission>> getMissions() {
+  Future<BaseResponse<List<Mission>>> getMissions() {
     // TODO: implement getMissions
     throw UnimplementedError();
   }
 
   @override
-  Future<Roadster> getRoadster() {
+  Future<BaseResponse<Roadster>> getRoadster() {
     // TODO: implement getRoadster
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> updateSpaceXCache() {
-    // TODO: implement updateSpaceXCache
     throw UnimplementedError();
   }
 }
