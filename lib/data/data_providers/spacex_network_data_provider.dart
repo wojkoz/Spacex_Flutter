@@ -5,14 +5,14 @@ import 'package:http/http.dart' as http;
 class SpaceXNetworkDataProvider implements ISpaceXDataProvider {
   @override
   Future<http.Response> getAllLaunches() {
-    // TODO: implement getAllLaunches
-    throw UnimplementedError();
+    return http
+        .get(Uri.parse("${UriConstants.baseUrl}${UriConstants.launches}"));
   }
 
   @override
   Future<http.Response> getAllMissions() {
-    // TODO: implement getAllMissions
-    throw UnimplementedError();
+    return http
+        .get(Uri.parse("${UriConstants.baseUrl}${UriConstants.missions}"));
   }
 
   @override

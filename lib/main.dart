@@ -48,6 +48,23 @@ class MyApp extends StatelessWidget {
         ),
         home: const SafeArea(
           child: Scaffold(
+            // TODO: add bottomNavigationbar
+            // bottomNavigationBar: BottomNavigationBar(
+            //   items: const [
+            //     BottomNavigationBarItem(
+            //       icon: Icon(Icons.car_rental_rounded),
+            //       label: "Roadster",
+            //     ),
+            //     BottomNavigationBarItem(
+            //       icon: Icon(Icons.call_missed),
+            //       label: "Missions",
+            //     ),
+            //     BottomNavigationBarItem(
+            //       icon: Icon(Icons.radio_button_checked),
+            //       label: "Launches",
+            //     ),
+            //   ],
+            // ),
             body: RoadsterScreen(),
           ),
         ),
