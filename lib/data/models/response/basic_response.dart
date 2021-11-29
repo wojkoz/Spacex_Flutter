@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class BaseResponse<T> extends Equatable {
-  final T data;
+  final T? data;
   final bool isSuccedded;
   final int code;
   List<String>? errors;

@@ -7,5 +7,4 @@ abstract class ISpaceXRepository {
   Future<BaseResponse<List<Mission>>> getMissions();
   Future<BaseResponse<List<Launch>>> getLaunches();
   Future<BaseResponse<Roadster>> getRoadster();
-  Future<void> updateSpaceXCache();
 }

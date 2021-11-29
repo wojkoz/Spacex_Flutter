@@ -6,6 +6,10 @@ abstract class ISpaceXCache {
   Future<void> saveAllMissions(List<Mission> missions);
   Future<void> saveMission(Mission mission);
   Future<void> saveAllLaunches(List<Launch> launches);
-  Future<void> saveLaunch(Launch launche);
+  Future<void> saveLaunch(Launch launch);
   Future<void> saveRoadster(Roadster roadster);
+
+  Future<List<Launch>> getAllLaunches();
+  Future<List<Mission>> getAllMissions();
+  Future<Roadster> getRoadster();
 }
