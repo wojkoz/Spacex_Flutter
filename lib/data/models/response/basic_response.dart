@@ -4,13 +4,13 @@ class BaseResponse<T> extends Equatable {
   final T? data;
   final bool isSuccedded;
   final int code;
-  List<String>? errors;
+  final List<String>? errors;
 
-  BaseResponse(
+  const BaseResponse(
       {required this.data,
       required this.isSuccedded,
       required this.code,
-      this.errors});
+      this.errors = const []});
 
   @override
   List<Object?> get props => [data, isSuccedded, code];

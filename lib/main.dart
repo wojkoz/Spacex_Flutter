@@ -1,23 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spacex_flutter/business_logic/cubit/roadster_cubit.dart';
+import 'package:spacex_flutter/data/data_providers/i_spacex_cache.dart';
+import 'package:spacex_flutter/data/data_providers/i_spacex_data_provider.dart';
+import 'package:spacex_flutter/data/data_providers/spacex_local_data_provider.dart';
+import 'package:spacex_flutter/data/data_providers/spacex_network_data_provider.dart';
+import 'package:spacex_flutter/data/respositories/i_spacex_repository.dart';
+import 'package:spacex_flutter/data/respositories/spacex_repository.dart';
+import 'package:spacex_flutter/presentation/screens/roadster_screen.dart';
 import 'package:spacex_flutter/utils/hive_init.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initHive();
-  runApp(const MyApp());
+
+  final ISpaceXDataProvider networkDataProvider = SpaceXNetworkDataProvider();
+  final ISpaceXCache localDataProvider = SpaceXLocalDataProvider();
+  final ISpaceXRepository repository = SpaceXRepository(
+    cacheDataProvider: localDataProvider,
+    networkDataProvider: networkDataProvider,
+  );
+
+  runApp(
+    MyApp(
+      repository: repository,
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final ISpaceXRepository repository;
+
+  const MyApp({Key? key, required this.repository}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => RoadsterCubit(repository: repository),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'SpaceX Flutter',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const SafeArea(
+          child: Scaffold(
+            body: RoadsterScreen(),
+          ),
+        ),
       ),
-      home: const Text('Flutter Demo Home Page'),
     );
   }
 }
