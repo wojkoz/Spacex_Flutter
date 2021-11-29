@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spacex_flutter/business_logic/cubit/roadster_cubit.dart';
+import 'package:spacex_flutter/business_logic/cubit/roadster/roadster_cubit.dart';
 import 'package:spacex_flutter/data/models/roadster/roadster.dart';
 
 class RoadsterScreen extends StatelessWidget {

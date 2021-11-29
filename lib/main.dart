@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spacex_flutter/business_logic/cubit/roadster_cubit.dart';
+import 'package:spacex_flutter/business_logic/cubit/launch/launch_cubit.dart';
+import 'package:spacex_flutter/business_logic/cubit/mission/mission_cubit.dart';
 import 'package:spacex_flutter/data/data_providers/i_spacex_cache.dart';
 import 'package:spacex_flutter/data/data_providers/i_spacex_data_provider.dart';
 import 'package:spacex_flutter/data/data_providers/spacex_local_data_provider.dart';
@@ -9,6 +10,8 @@ import 'package:spacex_flutter/data/respositories/i_spacex_repository.dart';
 import 'package:spacex_flutter/data/respositories/spacex_repository.dart';
 import 'package:spacex_flutter/presentation/screens/roadster_screen.dart';
 import 'package:spacex_flutter/utils/hive_init.dart';
+
+import 'business_logic/cubit/roadster/roadster_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +42,12 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => RoadsterCubit(repository: repository),
+        ),
+        BlocProvider(
+          create: (context) => MissionCubit(repository: repository),
+        ),
+        BlocProvider(
+          create: (context) => LaunchCubit(repository: repository),
         ),
       ],
       child: MaterialApp(
