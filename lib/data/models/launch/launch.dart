@@ -17,10 +17,10 @@ class Launch extends Equatable {
   final int launchDateUnix;
   final Rocket rocket;
   final LaunchSite launchSite;
-  final bool launchSuccess;
-  final LaunchFailureDetails launchFailureDetails;
+  final bool? launchSuccess;
+  final LaunchFailureDetails? launchFailureDetails;
   final Links links;
-  final String details;
+  final String? details;
 
   const Launch({
     required this.flightNumber,
@@ -31,10 +31,10 @@ class Launch extends Equatable {
     required this.launchDateUnix,
     required this.rocket,
     required this.launchSite,
-    required this.launchSuccess,
-    required this.launchFailureDetails,
+    this.launchSuccess,
+    this.launchFailureDetails,
     required this.links,
-    required this.details,
+    this.details,
   });
 
   @override
@@ -52,7 +52,7 @@ class Launch extends Equatable {
       'rocket': rocket.toMap(),
       'launch_site': launchSite.toMap(),
       'launch_success': launchSuccess,
-      'launch_failure_details': launchFailureDetails.toMap(),
+      'launch_failure_details': launchFailureDetails?.toMap(),
       'links': links.toMap(),
       'details': details,
     };
@@ -69,8 +69,9 @@ class Launch extends Equatable {
       rocket: Rocket.fromMap(map['rocket']),
       launchSite: LaunchSite.fromMap(map['launch_site']),
       launchSuccess: map['launch_success'],
-      launchFailureDetails:
-          LaunchFailureDetails.fromMap(map['launch_failure_details']),
+      launchFailureDetails: map['launch_failure_details'] != null
+          ? LaunchFailureDetails.fromMap(map['launch_failure_details'])
+          : null,
       links: Links.fromMap(map['links']),
       details: map['details'],
     );

@@ -7,9 +7,9 @@ class Mission extends Equatable {
   final String missionId;
   final List<String> manufacturers;
   final List<String> payloadIds;
-  final String wikipedia;
-  final String website;
-  final String twitter;
+  final String? wikipedia;
+  final String? website;
+  final String? twitter;
   final String description;
 
   const Mission(
@@ -17,9 +17,9 @@ class Mission extends Equatable {
       required this.missionId,
       required this.manufacturers,
       required this.payloadIds,
-      required this.wikipedia,
-      required this.website,
-      required this.twitter,
+      this.wikipedia,
+      this.website,
+      this.twitter,
       required this.description});
 
   @override

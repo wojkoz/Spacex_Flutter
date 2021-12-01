@@ -27,7 +27,7 @@ class SpaceXRepository implements ISpaceXRepository {
       if (code >= 200 && code < 400) {
         Iterable l = json.decode(response.body);
         List<Launch> missionList =
-            List<Launch>.from(l.map((model) => Launch.fromJson(model)));
+            List<Launch>.from(l.map((model) => Launch.fromMap(model)));
 
         return BaseResponse<List<Launch>>(
             data: missionList, code: code, isSuccedded: true);
@@ -51,9 +51,10 @@ class SpaceXRepository implements ISpaceXRepository {
 
     try {
       if (code >= 200 && code < 400) {
-        Iterable l = json.decode(response.body);
+        Iterable<dynamic> l = json.decode(response.body);
+
         List<Mission> missionList =
-            List<Mission>.from(l.map((model) => Mission.fromJson(model)));
+            List<Mission>.from(l.map((model) => Mission.fromMap(model)));
 
         return BaseResponse<List<Mission>>(
             data: missionList, code: code, isSuccedded: true);

@@ -3,21 +3,21 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class Links extends Equatable {
-  final String missionPatch;
-  final String missionPatchSmall;
-  final String articleLink;
-  final String wikipedia;
-  final String videoLink;
-  final String youtubeId;
+  final String? missionPatch;
+  final String? missionPatchSmall;
+  final String? articleLink;
+  final String? wikipedia;
+  final String? videoLink;
+  final String? youtubeId;
   final List<String> flickrImages;
 
   const Links(
-      {required this.missionPatch,
-      required this.missionPatchSmall,
-      required this.articleLink,
-      required this.wikipedia,
-      required this.videoLink,
-      required this.youtubeId,
+      {this.missionPatch,
+      this.missionPatchSmall,
+      this.articleLink,
+      this.wikipedia,
+      this.videoLink,
+      this.youtubeId,
       required this.flickrImages});
 
   @override
@@ -43,7 +43,9 @@ class Links extends Equatable {
       wikipedia: map['wikipedia'],
       videoLink: map['video_link'],
       youtubeId: map['youtube_id'],
-      flickrImages: List<String>.from(map['flickr_images']),
+      flickrImages: map['flickr_images'] != null
+          ? List<String>.from(map['flickr_images'])
+          : [],
     );
   }
 
