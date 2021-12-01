@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex_flutter/business_logic/cubit/mission/mission_cubit.dart';
-import 'package:spacex_flutter/business_logic/cubit/roadster/roadster_cubit.dart';
 import 'package:spacex_flutter/data/models/mission/mission.dart';
 
 class MissionScreen extends StatelessWidget {
@@ -11,7 +10,7 @@ class MissionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MissionCubit, MissionState>(
         builder: (BuildContext context, MissionState state) {
-      if (state is RoadsterInitial) {
+      if (state is MissionInitial) {
         context.read<MissionCubit>().getMissions();
         return Container();
       } else if (state is MissionLoading) {
@@ -21,7 +20,7 @@ class MissionScreen extends StatelessWidget {
       } else if (state is MissionLoaded) {
         return _buildScreen(context, state.missions);
       } else {
-        return const Text("Something went wrong!!");
+        return Text(state.toString());
       }
     });
   }

@@ -8,7 +8,7 @@ import 'package:spacex_flutter/data/data_providers/spacex_local_data_provider.da
 import 'package:spacex_flutter/data/data_providers/spacex_network_data_provider.dart';
 import 'package:spacex_flutter/data/respositories/i_spacex_repository.dart';
 import 'package:spacex_flutter/data/respositories/spacex_repository.dart';
-import 'package:spacex_flutter/presentation/screens/roadster_screen.dart';
+import 'package:spacex_flutter/presentation/screens/main_screen.dart';
 import 'package:spacex_flutter/utils/hive_init.dart';
 
 import 'business_logic/cubit/roadster/roadster_cubit.dart';
@@ -33,7 +33,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   final ISpaceXRepository repository;
-
   const MyApp({Key? key, required this.repository}) : super(key: key);
 
   @override
@@ -56,26 +55,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: const SafeArea(
-          child: Scaffold(
-            // TODO: add bottomNavigationbar
-            // bottomNavigationBar: BottomNavigationBar(
-            //   items: const [
-            //     BottomNavigationBarItem(
-            //       icon: Icon(Icons.car_rental_rounded),
-            //       label: "Roadster",
-            //     ),
-            //     BottomNavigationBarItem(
-            //       icon: Icon(Icons.call_missed),
-            //       label: "Missions",
-            //     ),
-            //     BottomNavigationBarItem(
-            //       icon: Icon(Icons.radio_button_checked),
-            //       label: "Launches",
-            //     ),
-            //   ],
-            // ),
-            body: RoadsterScreen(),
-          ),
+          child: MainScreen(),
         ),
       ),
     );
