@@ -26,8 +26,10 @@ class SpaceXRepository implements ISpaceXRepository {
     try {
       if (code >= 200 && code < 400) {
         Iterable l = json.decode(response.body);
-        List<Launch> missionList =
-            List<Launch>.from(l.map((model) => Launch.fromMap(model)));
+
+        var missions = l.map((model) => Launch.fromMap(model)).toList();
+
+        List<Launch> missionList = List<Launch>.from(missions.reversed);
 
         return BaseResponse<List<Launch>>(
             data: missionList, code: code, isSuccedded: true);

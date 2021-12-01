@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex_flutter/business_logic/cubit/mission/mission_cubit.dart';
+import 'package:spacex_flutter/constants/styles.dart';
 import 'package:spacex_flutter/data/models/mission/mission.dart';
+import 'package:spacex_flutter/presentation/widgets/short_item_description.dart';
 
 class MissionScreen extends StatelessWidget {
   const MissionScreen({Key? key}) : super(key: key);
@@ -12,7 +14,9 @@ class MissionScreen extends StatelessWidget {
         builder: (BuildContext context, MissionState state) {
       if (state is MissionInitial) {
         context.read<MissionCubit>().getMissions();
-        return Container();
+        return Container(
+          color: Styles.firstBackgroundColor,
+        );
       } else if (state is MissionLoading) {
         return const CircularProgressIndicator();
       } else if (state is MissionError) {
@@ -26,11 +30,24 @@ class MissionScreen extends StatelessWidget {
   }
 
   Widget _buildScreen(BuildContext context, List<Mission> missions) {
-    return ListView.builder(
-      itemCount: missions.length,
-      itemBuilder: (BuildContext bContext, int index) {
-        return Text(missions[index].missionName);
-      },
+    return Container(
+      color: Styles.firstBackgroundColor,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.builder(
+          itemCount: missions.length,
+          itemBuilder: (BuildContext bContext, int index) {
+            Mission mission = missions[index];
+            return Padding(
+              padding: const EdgeInsets.only(top: 15.0),
+              child: ShortItemDescription(
+                title: mission.missionName,
+                description: mission.description,
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 }

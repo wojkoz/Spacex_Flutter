@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex_flutter/business_logic/cubit/launch/launch_cubit.dart';
 import 'package:spacex_flutter/data/models/launch/launch.dart';
+import 'package:spacex_flutter/presentation/widgets/short_item_description.dart';
 
 class LaunchScreen extends StatelessWidget {
   const LaunchScreen({Key? key}) : super(key: key);
@@ -25,12 +26,22 @@ class LaunchScreen extends StatelessWidget {
     });
   }
 
-  Widget _buildScreen(BuildContext context, List<Launch> missions) {
+  Widget _buildScreen(BuildContext context, List<Launch> launches) {
     return ListView.builder(
-      itemCount: missions.length,
+      itemCount: launches.length,
       itemBuilder: (BuildContext bContext, int index) {
-        return Text(
-            "${missions[index].missionName} ${missions[index].launchSuccess}");
+        Launch launch = launches[index];
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ShortItemDescription(
+            title: launch.missionName,
+            description:
+                launch.details ?? "There is no available description...",
+            inFrontOfTitle: launch.upcoming
+                ? const Icon(Icons.star, color: Colors.redAccent)
+                : null,
+          ),
+        );
       },
     );
   }
