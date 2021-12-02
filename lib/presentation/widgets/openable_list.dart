@@ -16,30 +16,47 @@ class _OpenableListState extends State<OpenableList> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Styles.firstBackgroundColor,
-      elevation: 5,
-      child: _isOpen ? _buildOpen() : _buildClose(),
+    return GestureDetector(
+      onTap: () => {
+        setState(() {
+          _isOpen = !_isOpen;
+        })
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Card(
+          color: Styles.secondBackgroundColor,
+          elevation: 5,
+          child: _isOpen ? _buildOpen() : _buildClose(),
+        ),
+      ),
     );
   }
 
   Widget _buildClose() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        widget.title,
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          widget.title,
+        ],
+      ),
     );
   }
 
   Widget _buildOpen() {
-    return Row(
-      children: [
-        widget.title,
-        Column(
-          children: widget.items,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: widget.title,
+          ),
+          ...widget.items,
+        ],
+      ),
     );
   }
 }

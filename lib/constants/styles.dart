@@ -16,6 +16,9 @@ class Styles {
     color: firstTextColor,
   );
 
+  static const openableListTitleStyle =
+      TextStyle(color: Styles.secondTextColor, fontSize: 15);
+
   static final boxDecorationCircular30SecBgColor = BoxDecoration(
     borderRadius: BorderRadius.circular(30),
     color: secondBackgroundColor,
