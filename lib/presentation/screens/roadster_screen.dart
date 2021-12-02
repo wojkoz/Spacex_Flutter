@@ -104,7 +104,6 @@ class RoadsterScreen extends StatelessWidget {
                   child: LinkContainer(
                     links: [roadster.wikipedia],
                     width: 400,
-                    height: 100,
                   ),
                 ),
               ],

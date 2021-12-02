@@ -5,35 +5,38 @@ import 'package:url_launcher/url_launcher.dart';
 class LinkContainer extends StatelessWidget {
   final List<String> links;
   final double width;
-  final double height;
-  const LinkContainer(
-      {Key? key,
-      required this.links,
-      required this.width,
-      required this.height})
-      : super(key: key);
+  const LinkContainer({
+    Key? key,
+    required this.links,
+    required this.width,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      height: height,
       color: Styles.firstBackgroundColor,
-      child: ListView.builder(
-        itemCount: links.length,
-        itemBuilder: (BuildContext _, int index) {
-          return ElevatedButton(
-            child: Text(
-              links[index],
-            ),
-            onPressed: () => _launchURL(links[index]),
-          );
-        },
+      child: Column(
+        children: _createButtons(),
       ),
     );
   }
 
   void _launchURL(String url) async {
     if (!await launch(url)) throw 'Could not launch $url';
+  }
+
+  List<Widget> _createButtons() {
+    List<Widget> widgets = [];
+
+    for (var link in links) {
+      widgets.add(ElevatedButton(
+        child: Text(
+          link,
+        ),
+        onPressed: () => _launchURL(link),
+      ));
+    }
+    return widgets;
   }
 }

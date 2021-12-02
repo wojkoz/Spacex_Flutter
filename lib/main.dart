@@ -8,7 +8,9 @@ import 'package:spacex_flutter/data/data_providers/spacex_local_data_provider.da
 import 'package:spacex_flutter/data/data_providers/spacex_network_data_provider.dart';
 import 'package:spacex_flutter/data/respositories/i_spacex_repository.dart';
 import 'package:spacex_flutter/data/respositories/spacex_repository.dart';
+import 'package:spacex_flutter/presentation/routes/routes.dart';
 import 'package:spacex_flutter/presentation/screens/main_screen.dart';
+import 'package:spacex_flutter/presentation/screens/mission_details_screen.dart';
 import 'package:spacex_flutter/utils/hive_init.dart';
 
 import 'business_logic/cubit/roadster/roadster_cubit.dart';
@@ -50,6 +52,9 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        routes: {
+          Routes.missionDetailScreen: (context) => const MissionDetailsScreen(),
+        },
         title: 'SpaceX Flutter',
         theme: ThemeData(
           primarySwatch: Colors.blue,

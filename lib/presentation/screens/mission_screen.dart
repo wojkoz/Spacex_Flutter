@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex_flutter/business_logic/cubit/mission/mission_cubit.dart';
 import 'package:spacex_flutter/constants/styles.dart';
 import 'package:spacex_flutter/data/models/mission/mission.dart';
+import 'package:spacex_flutter/presentation/routes/routes.dart';
 import 'package:spacex_flutter/presentation/widgets/short_item_description.dart';
 
 class MissionScreen extends StatelessWidget {
@@ -40,9 +41,15 @@ class MissionScreen extends StatelessWidget {
             Mission mission = missions[index];
             return Padding(
               padding: const EdgeInsets.only(top: 15.0),
-              child: ShortItemDescription(
-                title: mission.missionName,
-                description: mission.description,
+              child: GestureDetector(
+                onTap: () => {
+                  Navigator.pushNamed(context, Routes.missionDetailScreen,
+                      arguments: mission),
+                },
+                child: ShortItemDescription(
+                  title: mission.missionName,
+                  description: mission.description,
+                ),
               ),
             );
           },
